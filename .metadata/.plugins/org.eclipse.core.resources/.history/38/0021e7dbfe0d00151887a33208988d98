@@ -1,0 +1,1592 @@
+import java.util.*;
+
+public class Principal {
+	
+
+	
+	public static void main(String [] args){
+		Scanner ler = new Scanner (System.in);
+		
+		
+		//Locação de livros:
+		
+		List<LivroF>alugarL = new ArrayList<LivroF>();
+		
+		List<LivroF>consutarL = new ArrayList<LivroF>();
+		
+		List<LivroF>devolverL = new ArrayList<LivroF>();
+		
+		//Funções bibliotecarias:
+		
+		List<Autor>autorL = new ArrayList<Autor>();
+		
+		List<Genero>generoL = new ArrayList<Genero>();
+		
+		List<Livro>livroL = new ArrayList<Livro>();
+		
+		List<Funcionario>funcionarioL = new ArrayList<Funcionario>();
+		
+		List<Aluno>alunoL = new ArrayList<Aluno>();
+		
+		List<Professor>professorL = new ArrayList<Professor>();
+		
+		
+		//Autores cadastrados
+		
+		Autor autor = new Autor();
+		
+		int opcao1,opcao2, opcao3, opcao4 , loop = 1 ;
+		
+		autor.setNome("Alvarez");
+		autor.setIdade(200);
+		autor.setNacionalidade("Brasileiro");
+		
+		autorL.add(autor);
+		
+		while(loop<7){
+			
+		System.out.println("Escolha as opções por seu indice:");
+		System.out.println("1. Locação de livros: ");
+		System.out.println("2. Funções bibliotecarias:");
+		System.out.println("3. Finalizar: ");
+		
+		
+		int escolha = ler.nextInt();
+		
+			
+			switch (escolha){
+			
+			
+			case 1:
+				
+				
+				System.out.println(" 1. Funcionário: ");
+				System.out.println(" 2. Aluno: ");
+				System.out.println(" 3. Professor: ");
+				opcao1 = ler.nextInt();
+				
+				switch (opcao1){
+				
+				case 1:
+					
+					
+					System.out.println(" 1. Alugar: ");
+					System.out.println(" 2. Consultar: ");
+					System.out.println(" 3. Devolver: ");
+					opcao2 = ler.nextInt();
+					
+					
+					switch (opcao2){
+					
+					case 1:
+						
+						//Alugar
+						alugarFuncionario(ler, alugarL, funcionarioL, livroL, autorL, generoL);
+					
+					break;
+					
+					case 2:
+						
+						//Consultar
+						consultarFuncionario(ler, alugarL, funcionarioL, livroL, autorL, generoL);
+						
+					break;
+					
+					case 3:
+						
+						//Devolver
+						devolucaoFuncionario(ler, alugarL, funcionarioL, livroL, autorL, generoL);
+						
+					break;
+					
+					
+					}
+					
+					break;
+					
+				case 2:
+					
+					System.out.println(" 1. Alugar: ");
+					System.out.println(" 2. Consultar: ");
+					System.out.println(" 3. Devolver: ");
+					opcao2 = ler.nextInt();
+					
+					switch (opcao2){
+					
+					case 1:
+						
+						alugarAluno(ler, alugarL, alunoL, livroL, autorL, generoL);
+					
+					break;
+					
+					case 2:
+						
+						consultarAluno(ler, alugarL, alunoL, livroL, autorL, generoL);
+						
+					break;
+					
+					case 3:
+						
+						devolucaoAluno(ler, alugarL, alunoL, livroL, autorL, generoL);
+						
+					break;
+					
+					
+					}
+				
+					break;
+					
+				case 3:
+					
+					System.out.println(" 1. Alugar: ");
+					System.out.println(" 2. Consultar: ");
+					System.out.println(" 3. Devolver: ");
+					opcao2 = ler.nextInt();
+					
+					switch (opcao2){
+					
+					case 1:
+						
+						alugarProfessor(ler, alugarL, professorL, livroL, autorL, generoL);
+					
+					break;
+					
+					case 2:
+						
+						consultarProfessor(ler, alugarL, professorL, livroL, autorL, generoL);
+						
+					break;
+					
+					case 3:
+						
+						devolucaoProfessor(ler, alugarL, professorL, livroL, autorL, generoL);
+						
+					break;
+					
+					
+					}
+					
+				}
+			
+			break;
+			
+			case 2:
+		
+			System.out.println("Escolha as opções pelo seu indice: ");
+			System.out.println(" 1. Autor: ");
+			System.out.println(" 2. Genero: ");
+			System.out.println(" 3. Livro: ");
+			System.out.println(" 4. Funcionário: ");
+			System.out.println(" 5. Aluno: ");
+			System.out.println(" 6. Professor: ");
+			opcao3 = ler.nextInt();
+		
+			switch (opcao3){
+			
+				case 1:
+					
+					System.out.println(" Escolha as opções por seu indice:");
+					System.out.println(" 1. Cadastar:");
+					System.out.println(" 2. editar: ");
+					System.out.println(" 3. Consutar:");
+					System.out.println(" 4. Remover:");
+					
+					opcao4 = ler.nextInt();
+			
+					switch (opcao4){
+				
+						case 1:
+							
+							// Autor
+						
+							inserirAutor(ler, autorL);
+						   
+						    	
+						break;
+						
+						case 2:
+							
+							
+						
+							editarAutor(ler, autorL);
+							
+							
+							
+						break;
+							
+						case 3:
+							
+							mostrarAutor(ler, autorL);
+							
+						break;
+						
+						case 4:
+							
+							removerAutor(ler, autorL);
+							
+						break;
+					
+					}
+			
+				break;
+				
+				case 2:
+					
+					//Gênero
+					
+					System.out.println(" Escolha as opções por seu indice:");
+					System.out.println(" 1. Cadastar:");
+					System.out.println(" 2. editar: ");
+					System.out.println(" 3. Consutar:");
+					System.out.println(" 4. Remover:");
+					
+					opcao2 = ler.nextInt();
+					
+					switch (opcao2){
+						
+						case 1:
+							
+						
+							inserirGenero(ler, generoL);
+						   
+						    	
+						break;
+						
+						case 2:
+						
+							editarGenero(ler, generoL);
+							
+							break;
+							
+						case 3:
+							
+							mostrarGenero(ler, generoL);
+							
+						break;
+						
+						case 4:
+							
+							removerGenero(ler, generoL);
+							
+						break;
+					
+					}
+					
+				break;
+					
+				case 3:
+					
+					System.out.println(" Escolha as opções por seu indice:");
+					System.out.println(" 1. Cadastar:");
+					System.out.println(" 2. editar: ");
+					System.out.println(" 3. Consutar:");
+					System.out.println(" 4. Remover:");
+					
+					//livro
+					
+					opcao2 = ler.nextInt();
+					
+					switch (opcao2){
+						
+						case 1:
+						
+							inserirLivro(ler, livroL);
+						   
+						    	
+						break;
+						
+						case 2:
+						
+							editarLivro(ler, livroL);
+							
+						break;
+							
+						case 3:
+							
+							mostrarLivro(ler, livroL);
+							
+						break;
+						
+						case 4:
+							
+							removerLivro(ler, livroL);
+							
+						break;
+					
+					}
+					
+				break;
+					
+				case 4:
+					
+					System.out.println(" Escolha as opções por seu indice:");
+					System.out.println(" 1. Cadastar:");
+					System.out.println(" 2. editar: ");
+					System.out.println(" 3. Consutar:");
+					System.out.println(" 4. Remover:");
+					
+					//Funcionario
+					
+					opcao2 = ler.nextInt();
+					
+					switch (opcao2){
+						
+						case 1:
+						
+							inserirFuncionario(ler, funcionarioL);
+						   
+						    	
+						break;
+						
+						case 2:
+						
+							editarFuncionario(ler, funcionarioL);
+							
+						break;
+							
+						case 3:
+							
+							mostrarFuncionario(ler, funcionarioL);
+							
+						break;
+						
+						case 4:
+							
+							removerFuncionario(ler, funcionarioL);
+							
+						break;
+					
+					}
+					
+				break;
+				
+				case 5:
+					
+					System.out.println(" Escolha as opções por seu indice:");
+					System.out.println(" 1. Cadastar:");
+					System.out.println(" 2. editar: ");
+					System.out.println(" 3. Consutar:");
+					System.out.println(" 4. Remover:");
+					
+					//Aluno
+					
+					opcao2 = ler.nextInt();
+					
+					switch (opcao2){
+						
+						case 1:
+							
+							inserirAluno(ler, alunoL);
+						   
+						    	
+						break;
+						
+						case 2:
+						
+							editarAluno(ler, alunoL);
+							
+						break;
+							
+						case 3:
+							
+							mostrarAluno(ler, alunoL);
+							
+						break;
+						
+						case 4:
+							
+							removerAluno(ler, alunoL);
+							
+						break;
+					
+					}
+					
+				break;
+					
+				case 6:
+					
+					System.out.println(" Escolha as opções por seu indice:");
+					System.out.println(" 1. Cadastar:");
+					System.out.println(" 2. editar: ");
+					System.out.println(" 3. Consutar:");
+					System.out.println(" 4. Remover:");
+					
+					//Professor
+					
+					opcao2 = ler.nextInt();
+					
+					switch (opcao2){
+						
+						case 1:
+							
+							inserirProfessor(ler, professorL);
+						   
+						    	
+						break;
+						
+						case 2:
+						
+							editarProfessor(ler, professorL);
+							
+						break;
+							
+						case 3:
+							
+							mostrarProfessor(ler, professorL);
+							
+						break;
+						
+						case 4:
+							
+							removerProfessor(ler, professorL);
+							
+						break;
+					
+					}
+					
+				break;
+			
+			}
+				
+			break;
+			
+			case 3:
+				
+				//Finalizando
+				
+				System.out.println("O programa foi finalizado!");
+			
+				
+				System.exit(0);
+				
+				break;
+			
+			}
+	
+	}
+}
+		
+	
+	 //Locação de livros:
+	
+	int contador = 3;
+	
+	
+	public static void alugarFuncionario(Scanner ler, List<LivroF>  alugarL , List<Funcionario> funcionarioL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+		LivroF livroF  = new LivroF();
+		
+		Funcionario funcionario = new Funcionario();
+		Livro livro = new Livro();
+		Autor autor = new Autor();
+		Genero genero = new Genero();
+		
+		System.out.println("Código do funcionario:");
+		livroF.setCodUsuario(funcionarioL.get(ler.nextInt()).getNome());
+		
+		System.out.println("Código do livro:");
+		int indic = ler.nextInt();
+		livroF.setCodLivro(livroL.get(indic).getTitulo());
+		
+		System.out.println("Código do autor:");
+		livroF.setCodAutor(autorL.get(ler.nextInt()).getNome());
+		
+		System.out.println("Código do gênero:");
+		livroF.setCodGenero(generoL.get(ler.nextInt()).getDescricao());
+		
+		
+		
+		if((livroL.get(indic).getLocado()) == true){
+			
+			livroL.get(indic).setLocado(false);
+			
+				if(livroF.getContador() == 0){
+				
+				livroF.setContador(livroF.getContador()-1);
+				
+				
+				alugarL.add(livroF);
+				
+				System.out.println("\n Aluguel concluído! ");
+				System.out.println("Esse usuario ainda pode alugar "+livroF.getContador()+" livros!");
+				
+				System.out.println("................................ \n");
+				
+				}else{
+					
+					System.out.println("Você atingil o limite maximo de locação");
+					
+				}
+				 
+			}else{
+				
+				System.out.println("Esse livro já foi alugado!");
+				System.out.println("................................ \n");
+				
+			}
+		
+	}
+		
+
+
+		public static void alugarAluno(Scanner ler, List<LivroF>  alugarL , List<Aluno> alunoL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+			LivroF livroF  = new LivroF();
+			
+			Aluno aluno = new Aluno();
+			Livro livro = new Livro();
+			Autor autor = new Autor();
+			Genero genero = new Genero();
+			
+			System.out.println("Código do Aluno:");
+			livroF.setCodUsuario(alunoL.get(ler.nextInt()).getNome());
+			
+			System.out.println("Código do livro:");
+			int indic = ler.nextInt();
+			livroF.setCodLivro(livroL.get(indic).getTitulo());
+			
+			System.out.println("Código do autor:");
+			livroF.setCodAutor(autorL.get(ler.nextInt()).getNome());
+			
+			System.out.println("Código do gênero:");
+			livroF.setCodGenero(generoL.get(ler.nextInt()).getDescricao());
+			
+			if((livroL.get(indic).getLocado()) == true){
+				
+				livroL.get(indic).setLocado(false);
+				
+				if(livroF.getContador() == 0){
+				
+				livroF.setContador(livroF.getContador()-1);
+				
+				
+				alugarL.add(livroF);
+				
+				System.out.println("\n Aluguel concluído! ");
+				System.out.println("Esse usuario ainda pode alugar "+livroF.getContador()+" livros!");
+				System.out.println("................................ \n");
+				
+				}else{
+					
+					System.out.println("Você atingil o limite maximo de locação");
+					
+				}
+				 
+			}else{
+				
+				System.out.println("Esse livro já foi alugado!");
+				System.out.println("................................ \n");
+				
+			}
+			
+		}
+			
+			
+			public static void alugarProfessor(Scanner ler, List<LivroF>  alugarL , List<Professor> professorL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+				LivroF livroF  = new LivroF();
+				
+				Professor professor = new Professor();
+				Livro livro = new Livro();
+				Autor autor = new Autor();
+				Genero genero = new Genero();
+				
+				System.out.println("Código do Professor:");
+				livroF.setCodUsuario(professorL.get(ler.nextInt()).getNome());
+				
+				System.out.println("Código do livro:");
+				int indic = ler.nextInt();
+				livroF.setCodLivro(livroL.get(indic).getTitulo());
+				
+				System.out.println("Código do autor:");
+				livroF.setCodAutor(autorL.get(ler.nextInt()).getNome());
+				
+				System.out.println("Código do gênero:");
+				livroF.setCodGenero(generoL.get(ler.nextInt()).getDescricao());
+				
+				if((livroL.get(indic).getLocado()) == true){
+					
+					livroL.get(indic).setLocado(false);
+					
+					if(livroF.getContador() == 0){
+						
+						livroF.setContador(livroF.getContador()-1);
+						
+						
+						alugarL.add(livroF);
+						
+						System.out.println("\n Aluguel concluído! ");
+						System.out.println("Esse usuario ainda pode alugar "+livroF.getContador()+" livros!");
+						System.out.println("................................ \n");
+						
+						}else{
+							
+							System.out.println("Você atingil o limite maximo de locação");
+							
+						}
+						 
+					}else{
+						
+						System.out.println("Esse livro já foi alugado!");
+						System.out.println("................................ \n");
+						
+					}
+				
+	}
+	
+	public static void consultarFuncionario(Scanner ler, List<LivroF>  alugarL , List<Funcionario> funcionarioL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+		LivroF livroF = new LivroF();
+		Funcionario funcionario = new Funcionario();
+		
+		System.out.println("Digite o indice:");
+		int indic = ler.nextInt();
+		
+		if(alugarL.size() < indic){
+			
+			
+		System.out.println("................................ \n");
+		System.out.println("O indice não existe! \n");
+		System.out.println("................................ ");
+		
+	
+	}else{
+			
+		 
+		 for(LivroF LivroF : alugarL){
+
+			 System.out.println("................................");
+			 
+			 System.out.println("\t \t Funcionario");
+			 System.out.println("Nome: "+alugarL.get(indic).getCodUsuario());
+			 System.out.println("Livro: "+alugarL.get(indic).getCodLivro());
+			 System.out.println("Autor: "+alugarL.get(indic).getCodAutor());
+			 System.out.println("Genero: "+alugarL.get(indic).getCodGenero());
+			 System.out.println("Devolução após 15 dias!");
+			 
+			 System.out.println("................................");
+
+			alugarL.get(indic);
+
+			break;
+			
+		 }
+			
+	 }
+		
+	}
+	
+	
+	public static void consultarAluno(Scanner ler, List<LivroF>  alugarL , List<Aluno> alunoL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+		LivroF livroF = new LivroF();
+		Aluno aluno = new Aluno();
+		
+		System.out.println("Digite o indice:");
+		int indic = ler.nextInt();
+		
+		if(alugarL.size() < indic){
+			
+			
+		System.out.println("................................ \n");
+		System.out.println("O indice não existe! \n");
+		System.out.println("................................ ");
+		
+	
+	}else{
+			
+		 
+		 for(LivroF LivroF : alugarL){
+
+			 System.out.println("................................");
+			 
+			 System.out.println("\t \t Aluno");
+			 System.out.println("Nome: "+alugarL.get(indic).getCodUsuario());
+			 System.out.println("Livro: "+alugarL.get(indic).getCodLivro());
+			 System.out.println("Autor: "+alugarL.get(indic).getCodAutor());
+			 System.out.println("Genero: "+alugarL.get(indic).getCodGenero());
+			 System.out.println("Devolução após 15 dias!");
+			 
+			 System.out.println("................................");
+
+			alugarL.get(indic);
+
+			break;
+			
+		 }
+			
+	 }
+		
+	}
+	
+	
+	public static void consultarProfessor(Scanner ler, List<LivroF>  alugarL , List<Professor> professorL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+		LivroF livroF = new LivroF();
+		Funcionario funcionario = new Funcionario();
+		
+		System.out.println("Digite o indice:");
+		int indic = ler.nextInt();
+		
+		if(alugarL.size() < indic){
+			
+			
+		System.out.println("................................ \n");
+		System.out.println("O indice não existe! \n");
+		System.out.println("................................ ");
+		
+	
+	}else{
+			
+		 
+		 for(LivroF LivroF : alugarL){
+
+			 System.out.println("................................");
+			 
+			 System.out.println("\t \t Professor");
+			 System.out.println("Nome: "+alugarL.get(indic).getCodUsuario());
+			 System.out.println("Livro: "+alugarL.get(indic).getCodLivro());
+			 System.out.println("Autor: "+alugarL.get(indic).getCodAutor());
+			 System.out.println("Genero: "+alugarL.get(indic).getCodGenero());
+			 System.out.println("Devolução após 15 dias!");
+			 
+			 System.out.println("................................");
+
+			alugarL.get(indic);
+
+			break;
+			
+		 }
+			
+	 }
+		
+	}
+	
+	
+	public static void devolucaoFuncionario(Scanner ler, List<LivroF>  alugarL , List<Funcionario> funcionarioL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+		LivroF livroF = new LivroF();
+		Funcionario funcionario = new Funcionario();
+		
+		System.out.println("Digite o indice:");
+		int indic = ler.nextInt();
+		
+		if(alugarL.size() < indic){
+			
+			
+		System.out.println("................................ \n");
+		System.out.println("O indice não existe! \n");
+		System.out.println("................................ ");
+		
+	
+	}else{
+			
+		 
+		 for(LivroF LivroF : alugarL){
+
+			 System.out.println("................................");
+			 
+			 System.out.println("\t \t Funcionario");
+			 System.out.println("Nome: "+alugarL.get(indic).getCodUsuario());
+			 System.out.println("Livro: "+alugarL.get(indic).getCodLivro());
+			 System.out.println("Autor: "+alugarL.get(indic).getCodAutor());
+			 System.out.println("Genero: "+alugarL.get(indic).getCodGenero());
+			 
+			 
+			 System.out.println("Os dados acima foram removidos! \n");
+			 
+			 System.out.println("................................");
+			 
+			 livroL.get(indic).setLocado(true);
+
+			alugarL.remove(indic);
+
+			break;
+			
+		 }
+			
+	 }
+		
+		
+	}
+		
+		
+		public static void devolucaoAluno(Scanner ler, List<LivroF>  alugarL , List<Aluno> alunoL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+			LivroF livroF = new LivroF();
+			Aluno aluno = new Aluno();
+			
+			System.out.println("Digite o indice:");
+			int indic = ler.nextInt();
+			
+			if(alugarL.size() < indic){
+				
+				
+			System.out.println("................................ \n");
+			System.out.println("O indice não existe! \n");
+			System.out.println("................................ ");
+			
+		
+		}else{
+				
+			 
+			 for(LivroF LivroF : alugarL){
+
+				 System.out.println("................................");
+				 
+				 System.out.println("\t \t Aluno");
+				 System.out.println("Nome: "+alugarL.get(indic).getCodUsuario());
+				 System.out.println("Livro: "+alugarL.get(indic).getCodLivro());
+				 System.out.println("Autor: "+alugarL.get(indic).getCodAutor());
+				 System.out.println("Genero: "+alugarL.get(indic).getCodGenero());
+				
+				 System.out.println("Os dados acima foram removidos! \n");
+				 
+				 System.out.println("................................");
+				 
+				 livroL.get(indic).setLocado(true);
+
+				alugarL.remove(indic);
+
+				break;
+				
+			 }
+				
+		 }
+			
+			
+		}
+			
+			
+			public static void devolucaoProfessor(Scanner ler, List<LivroF>  alugarL , List<Professor> professorL , List<Livro> livroL , List<Autor> autorL , List<Genero> generoL) {
+				LivroF livroF = new LivroF();
+				Funcionario funcionario = new Funcionario();
+				
+				System.out.println("Digite o indice:");
+				int indic = ler.nextInt();
+				
+				if(alugarL.size() < indic){
+					
+					
+				System.out.println("................................ \n");
+				System.out.println("O indice não existe! \n");
+				System.out.println("................................ ");
+				
+			
+			}else{
+					
+				 
+				 for(LivroF LivroF : alugarL){
+
+					 System.out.println("................................");
+					 
+					 System.out.println("\t \t Professor");
+					 System.out.println("Nome: "+alugarL.get(indic).getCodUsuario());
+					 System.out.println("Livro: "+alugarL.get(indic).getCodLivro());
+					 System.out.println("Autor: "+alugarL.get(indic).getCodAutor());
+					 System.out.println("Genero: "+alugarL.get(indic).getCodGenero());
+					 
+					 System.out.println("Os dados acima foram removidos! \n");
+					 
+					 System.out.println("................................");
+					 
+					 livroL.get(indic).setLocado(true);
+
+					alugarL.remove(indic);
+
+					break;
+					
+				 }
+					
+			 }
+				
+				
+	}
+	
+	
+	
+	//Funções bibliotecarias:
+	
+	//Cadastro
+	
+	public static void inserirAutor(Scanner ler, List<Autor> autorL) {
+		Autor autor = new Autor();
+		
+		System.out.println("Nome:");
+		autor.setNome(ler.next());
+		
+		System.out.println("Idade:");
+		autor.setIdade(ler.nextInt());
+		
+		System.out.println("Nacionalidade:");
+		autor.setNacionalidade(ler.next());
+		
+		autorL.add(autor);
+		
+		
+	}
+
+	
+	public static void inserirGenero(Scanner ler, List<Genero> generoL) {
+		Genero genero = new Genero();
+		
+		genero.setCod("12");
+		genero.setDescricao("Romantico");
+		generoL.add(genero);
+		
+		System.out.println("Código:");
+		genero.setCod(ler.next());
+		
+		System.out.println("Descrição:");
+		genero.setDescricao(ler.next());
+		
+		generoL.add(genero);
+		
+	}
+	
+	public static void inserirLivro(Scanner nextLine, List<Livro> livroL) {
+		
+		Scanner ler = new Scanner(System.in);
+		
+		ler.useDelimiter("\n");
+		
+		Livro livro = new Livro();
+		
+		livro.setTitulo("Noite na Taverna");
+		
+		livro.setNPagina(76);
+		
+		System.out.println("Titulo:");
+		livro.setTitulo(ler.next());
+		
+		System.out.println("Número de páginas:");
+		livro.setNPagina(ler.nextInt());
+		
+		livro.setLocado(true);
+		
+		//livro.setLocado(ler.nextBoolean());
+		
+		livroL.add(livro);
+	
+	}
+	
+	public static void inserirFuncionario(Scanner ler, List<Funcionario> funcionarioL) {
+		Funcionario funcionario = new Funcionario();
+		
+		System.out.println("Nome:");
+		funcionario.setNome(ler.next());
+		
+		System.out.println("Idade:");
+		funcionario.setIdade(ler.nextInt());
+		
+		System.out.println("CPF:");
+		funcionario.setCpf(ler.next());
+		
+		funcionarioL.add(funcionario);
+	
+	}
+	
+	public static void inserirAluno(Scanner ler, List<Aluno> alunoL) {
+		Aluno aluno = new Aluno();
+		
+		System.out.println("Nome:");
+		aluno.setNome(ler.next());
+		
+		System.out.println("Idade:");
+		aluno.setIdade(ler.nextInt());
+		
+		System.out.println("Registro:");
+		aluno.setRa(ler.next());
+		
+		alunoL.add(aluno);
+	
+	}
+	
+	public static void inserirProfessor(Scanner ler, List<Professor> professorL) {
+		Professor professor = new Professor();
+		
+		System.out.println("Nome:");
+		professor.setNome(ler.next());
+		
+		System.out.println("Idade:");
+		professor.setIdade(ler.nextInt());
+		
+		System.out.println("Matricula:");
+		professor.setMatricula(ler.next());
+		
+		professorL.add(professor);
+	
+	}
+	
+	
+	
+
+
+	
+
+	//Editar
+
+public static void editarAutor(Scanner ler, List<Autor> autorL) {
+	Autor autor = new Autor();
+	
+	System.out.println("Digite o indice:");
+	 int indic = ler.nextInt();
+	
+		
+	 if(autorL.size() < indic){
+			
+		 	System.out.println("................................ \n");
+			System.out.println("O indice não existe! \n");
+			System.out.println("................................");
+			
+				
+		}else{
+				
+					
+				 System.out.println("Nome:");
+					autorL.get(indic).setNome(ler.next());
+					
+					System.out.println("Idade:");
+					autorL.get(indic).setIdade(ler.nextInt());
+					
+					System.out.println("Nacionalidade:");
+					autorL.get(indic).setNacionalidade(ler.next());
+					
+					autorL.add(autor);
+			
+		}
+
+	}
+
+
+		public static void editarGenero(Scanner ler, List<Genero> generoL) {
+				Genero genero = new Genero();
+	
+				System.out.println("Digite o indice:");
+				int indic = ler.nextInt();
+				
+				if(generoL.size() < indic){
+					
+				 	System.out.println("................................ \n");
+					System.out.println("O indice não existe! \n");
+					System.out.println("................................");
+					
+						
+				}else{
+				
+					System.out.println("Código:");
+					generoL.get(indic).setCod(ler.next());
+		
+					System.out.println("Descrição:");
+					generoL.get(indic).setDescricao(ler.next());
+		
+					generoL.add(genero);
+				
+				}
+	
+		}
+
+		public static void editarLivro(Scanner ler, List<Livro> livroL) {
+			Livro livro = new Livro();
+			
+			System.out.println("Digite o indice:");
+			int indic = ler.nextInt();
+			
+			if(livroL.size() < indic){
+				
+			 	System.out.println("................................ \n");
+				System.out.println("O indice não existe! \n");
+				System.out.println("................................");
+				
+					
+			}else{
+			
+				System.out.println("Titulo:");
+				livroL.get(indic).setTitulo(ler.next());
+				
+				System.out.println("Número de páginas:");
+				livroL.get(indic).setNPagina(ler.nextInt());
+				
+				System.out.println("Locado:");
+				livroL.get(indic).setLocado(ler.nextBoolean());
+				
+				livroL.add(livro);
+			
+			}
+		
+		}
+		
+		public static void editarFuncionario(Scanner ler, List<Funcionario> funcionarioL) {
+			Funcionario funcionario = new Funcionario();
+			
+			System.out.println("Digite o indice:");
+			int indic = ler.nextInt();
+			
+			if(funcionarioL.size() < indic){
+				
+			 	System.out.println("................................ \n");
+				System.out.println("O indice não existe! \n");
+				System.out.println("................................");
+				
+					
+			}else{
+			
+				System.out.println("Nome:");
+				funcionarioL.get(indic).setNome(ler.next());
+				
+				System.out.println("Idade:");
+				funcionarioL.get(indic).setIdade(ler.nextInt());
+				
+				System.out.println("CPF:");
+				funcionarioL.get(indic).setCpf(ler.next());
+				
+				funcionarioL.add(funcionario);
+			
+			}
+		
+		}
+		
+		public static void editarAluno(Scanner ler, List<Aluno> alunoL) {
+			Aluno aluno = new Aluno();
+			
+			System.out.println("Digite o indice:");
+			int indic = ler.nextInt();
+			
+			if(alunoL.size() < indic){
+				
+			 	System.out.println("................................ \n");
+				System.out.println("O indice não existe! \n");
+				System.out.println("................................");
+				
+					
+			}else{
+			
+				System.out.println("Nome:");
+				alunoL.get(indic).setNome(ler.next());
+				
+				System.out.println("Idade:");
+				alunoL.get(indic).setIdade(ler.nextInt());
+				
+				System.out.println("Registro:");
+				alunoL.get(indic).setRa(ler.next());
+				
+				alunoL.add(aluno);
+			
+			}
+		
+		}
+		
+		public static void editarProfessor(Scanner ler, List<Professor> professorL) {
+			Professor professor = new Professor();
+			
+			System.out.println("Digite o indice:");
+			int indic = ler.nextInt();
+			
+			if(professorL.size() < indic){
+				
+			 	System.out.println("................................ \n");
+				System.out.println("O indice não existe! \n");
+				System.out.println("................................");
+				
+					
+			}else{
+			
+				System.out.println("Nome:");
+				professorL.get(indic).setNome(ler.next());
+				
+				System.out.println("Idade:");
+				professorL.get(indic).setIdade(ler.nextInt());
+				
+				System.out.println("Matricula:");
+				professorL.get(indic).setMatricula(ler.next());
+				
+				professorL.add(professor);
+			
+			}
+		
+		}
+
+		
+		//Listar
+		
+		
+		public static void mostrarAutor(Scanner ler, List<Autor> autorL) {
+			Autor autor = new Autor();
+	
+	
+		
+			System.out.println("Digite o indice:");
+			int indic = ler.nextInt();
+		
+			if(autorL.size() < indic){
+				
+				System.out.println("................................ \n");
+				System.out.println("O indice não existe! \n");
+				System.out.println("................................ ");
+				
+			}else{
+					 
+					 for(Autor Autor : autorL){
+		
+						 System.out.println("................................");
+						 System.out.println("Nome: "+autorL.get(indic).getNome());
+						 System.out.println("Idade: "+autorL.get(indic).getIdade());
+						 System.out.println("Nacionalidade: "+autorL.get(indic).getNacionalidade());
+						 System.out.println("................................");
+		
+						autorL.get(indic);
+		
+						break;
+						
+					 }
+						
+				 }
+			
+		}
+					
+			 public static void mostrarGenero(Scanner ler, List<Genero> generoL) {
+							Genero genero = new Genero();
+							
+							System.out.println("Digite o indice:");
+							int indic = ler.nextInt();
+							
+						if(generoL.size() < indic){
+								
+								
+							System.out.println("................................ \n");
+							System.out.println("O indice não existe! \n");
+							System.out.println("................................ ");
+							
+						
+						}else{
+								
+							 
+							 for(Genero Genero : generoL){
+				
+								 System.out.println("................................");
+								 System.out.println("Codigo: "+generoL.get(indic).getCod());
+								 System.out.println("Descrição: "+generoL.get(indic).getDescricao());
+								 System.out.println("................................");
+				
+								generoL.get(indic);
+				
+								break;
+								
+							 }
+								
+						 }
+							
+				}
+						
+				public static void mostrarLivro(Scanner ler, List<Livro> livroL) {
+							Livro livro = new Livro();
+							
+							System.out.println("................................ \n");
+							System.out.println("O indice não existe! \n");
+							System.out.println("................................ ");
+							int indic = ler.nextInt();
+							
+						if(livroL.size() < indic){
+								
+								
+							System.out.println("O indice não existe! \n");
+								
+						}else{
+							 
+							 for(Livro Livro : livroL){
+				
+								 System.out.println("................................");
+								 System.out.println("Titulo: "+livroL.get(indic).getTitulo());
+								 System.out.println("Número de páginas: "+livroL.get(indic).getNPagina());
+								 System.out.println("Locado: "+livroL.get(indic).getLocado());
+								 System.out.println("................................");
+				
+								livroL.get(indic);
+				
+								break;
+								
+							 }
+								
+						 }
+							
+						
+				}
+						
+				public static void mostrarFuncionario(Scanner ler, List<Funcionario> funcionarioL) {
+							Funcionario funcionario = new Funcionario();
+							
+							System.out.println("Digite o indice:");
+							int indic = ler.nextInt();
+							
+						if(funcionarioL.size() < indic){
+								
+							
+							System.out.println("................................ \n");
+							System.out.println("O indice não existe! \n");
+							System.out.println("................................ ");
+							
+						}else{
+							 
+							 for(Funcionario Funcionario : funcionarioL){
+				
+								 System.out.println("................................");
+								 System.out.println("Nome: "+funcionarioL.get(indic).getNome());
+								 System.out.println("Idade: "+funcionarioL.get(indic).getIdade());
+								 System.out.println("CPF: "+funcionarioL.get(indic).getCpf());
+								 System.out.println("................................");
+				
+								funcionarioL.get(indic);
+				
+								break;
+								
+							 }
+								
+						 }
+							
+						
+				}
+						
+				public static void mostrarAluno(Scanner ler, List<Aluno> alunoL) {
+							Aluno aluno = new Aluno();
+							
+							System.out.println("Digite o indice:");
+							int indic = ler.nextInt();
+							
+						if(alunoL.size() < indic){
+								
+								
+							System.out.println("................................ \n");
+							System.out.println("O indice não existe! \n");
+							System.out.println("................................ ");
+									
+						}else{
+							 
+							 for(Aluno Aluno : alunoL){
+				
+								 System.out.println("................................");
+								 System.out.println("Nome: "+alunoL.get(indic).getNome());
+								 System.out.println("Idade: "+alunoL.get(indic).getIdade());
+								 System.out.println("Registro: "+alunoL.get(indic).getRa());
+								 System.out.println("................................");
+				
+								alunoL.get(indic);
+				
+								break;
+								
+							 }
+								
+						 }
+						
+				}
+						
+				public static void mostrarProfessor(Scanner ler, List<Professor> professorL) {
+							Professor professor = new Professor();
+							
+							System.out.println("Digite o indice:");
+							int indic = ler.nextInt();
+							
+							if(professorL.size() < indic){
+								
+								
+								System.out.println("................................ \n");
+								System.out.println("O indice não existe! \n");
+								System.out.println("................................ ");
+									
+							}else{
+							 
+							 for(Professor Professor : professorL){
+				
+								 System.out.println("................................");
+								 System.out.println("Nome: "+professorL.get(indic).getNome());
+								 System.out.println("Idade: "+professorL.get(indic).getIdade());
+								 System.out.println("Matricula: "+professorL.get(indic).getMatricula());
+								 System.out.println("................................");
+				
+								professorL.get(indic);
+				
+								break;
+								
+							 }
+								
+						 }
+						
+						
+				}
+						
+			
+	//Remover
+	
+				public static void removerAutor(Scanner ler, List<Autor> autorL) {
+					Autor autor = new Autor();
+					
+					System.out.println("Digite o indice:");
+					int indic = ler.nextInt();
+					
+					if(autorL.size() < indic){
+						
+						
+						System.out.println("................................ \n");
+						System.out.println("O indice não existe! \n");
+						System.out.println("................................ ");
+							
+					}else{
+
+							System.out.println("................................");
+							 System.out.println("Nome: "+autorL.get(indic).getNome());
+							 System.out.println("Idade: "+autorL.get(indic).getIdade());
+							 System.out.println("Nacionalidade: "+autorL.get(indic).getNacionalidade());
+							 System.out.println("\n");
+							 
+							 System.out.println("O cadastro a cima foi removido com sucesso! \n");
+							 System.out.println("................................");
+							
+							autorL.remove(indic);
+					
+					}
+		
+			}
+
+				
+				public static void removerGenero(Scanner ler, List<Genero> generoL) {
+					Genero genero = new Genero();
+					
+					System.out.println("Digite o indice:");
+					int indic = ler.nextInt();
+					
+					if(generoL.size() < indic){
+						
+						
+						System.out.println("................................ \n");
+						System.out.println("O indice não existe! \n");
+						System.out.println("................................ ");
+							
+					}else{
+					
+						 System.out.println("................................");
+						 System.out.println("Codigo: "+generoL.get(indic).getCod());
+						 System.out.println("Descrição: "+generoL.get(indic).getDescricao());
+						 System.out.println("\n");
+						 
+						 System.out.println("O cadastro acima foi removido com sucesso!");
+						 System.out.println("................................");
+						 
+						 generoL.remove(indic);
+					 
+					}
+					
+				}
+				
+				public static void removerLivro(Scanner ler, List<Livro> livroL) {
+					Livro livro = new Livro();
+
+					
+					System.out.println("Digite o indice:");
+					int indic = ler.nextInt();
+					
+					if(livroL.size() < indic){
+						
+						
+						System.out.println("................................ \n");
+						System.out.println("O indice não existe! \n");
+						System.out.println("................................ ");
+							
+					}else{
+				
+						 System.out.println("................................");
+						 System.out.println("Titulo: "+livroL.get(indic).getTitulo());
+						 System.out.println("Número de páginas: "+livroL.get(indic).getNPagina());
+						 System.out.println("Locado: "+livroL.get(indic).getLocado());
+						 System.out.println("\n");
+						 
+						 System.out.println("O cadastro acima foi removido com sucesso!");
+						 System.out.println("................................");
+					
+						 livroL.remove(indic);
+					
+					}
+				
+				}
+				
+				public static void removerFuncionario(Scanner ler, List<Funcionario> funcionarioL) {
+					Funcionario funcionario = new Funcionario();
+					
+					System.out.println("Digite o indice:");
+					int indic = ler.nextInt();
+					
+					if(funcionarioL.size() < indic){
+						
+						
+						System.out.println("................................ \n");
+						System.out.println("O indice não existe! \n");
+						System.out.println("................................ ");
+							
+					}else{
+					
+						System.out.println("................................");
+						 System.out.println("Nome: "+funcionarioL.get(indic).getNome());
+						 System.out.println("Idade: "+funcionarioL.get(indic).getIdade());
+						 System.out.println("CPF: "+funcionarioL.get(indic).getCpf());
+						 System.out.println("\n");
+						 
+						 System.out.println("O cadastro acima foi removido com sucesso!");
+						 System.out.println("................................");
+					
+						 funcionarioL.remove(indic);
+					
+					}
+				
+				}
+				
+				public static void removerAluno(Scanner ler, List<Aluno> alunoL) {
+					Aluno aluno = new Aluno();
+					
+					System.out.println("Digite o indice:");
+					int indic = ler.nextInt();
+					
+					if(alunoL.size() < indic){
+						
+						
+						System.out.println("................................ \n");
+						System.out.println("O indice não existe! \n");
+						System.out.println("................................ ");
+							
+					}else{
+				
+						System.out.println("................................");
+						 System.out.println("Nome: "+alunoL.get(indic).getNome());
+						 System.out.println("Idade: "+alunoL.get(indic).getIdade());
+						 System.out.println("Registro: "+alunoL.get(indic).getRa());
+						 System.out.println("\n");
+					
+						 System.out.println("O cadastro acima foi removido com sucesso!");
+						 System.out.println("................................");
+						 
+						 alunoL.remove(indic);
+					
+					}
+
+				}
+				
+				public static void removerProfessor(Scanner ler, List<Professor> professorL) {
+					Professor professor = new Professor();
+					
+					System.out.println("Digite o indice:");
+					int indic = ler.nextInt();
+					
+					if(professorL.size() < indic){
+						
+						
+						System.out.println("................................ \n");
+						System.out.println("O indice não existe! \n");
+						System.out.println("................................ ");
+							
+					}else{
+					
+						 System.out.println("................................");
+						 System.out.println("Nome: "+professorL.get(indic).getNome());
+						 System.out.println("Idade: "+professorL.get(indic).getIdade());
+						 System.out.println("Matricula: "+professorL.get(indic).getMatricula());
+						 System.out.println("\n");
+						 
+						 System.out.println("O cadastro acima foi removido com sucesso!");
+						 System.out.println("................................");
+					
+						 professorL.remove(indic);
+						 
+					}
+				
+				}
+				
+}

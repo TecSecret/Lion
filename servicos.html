@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+    
+		<link rel="stylesheet" type="text/css" media="screen and (min-width:0px)" href="lionMobile.css">
+		<link rel="stylesheet" type="text/css" media="screen and (min-width:1000px)" href="lion.css">
+
+		<link rel="shortcut icon" href="img/lion.png" >
+
+		<title>Lion - Serviços</title>
+
+	</head>
+
+	<body>
+
+<script src="jq/jquery-2.1.4.min.js"></script>
+
+
+<div id="container">
+		<div id="menuS">
+         
+            <ul>
+            
+            	 <center><li><a href="index.html"><img src="img/menu2.png" onmouseover="this.src='img/menu2T.png';" onmouseout="this.src='img/menu2.png';"/></a></li>
+                  <li><a href="#">Serviços</a></li>
+                 <li><a href="contatos.html">Contatos</a></li>
+		 		         <li><a href="#loginS" id="abrir">Login</a></li>
+                <li><a><button id="gravar"></button></a></li>
+        
+            </ul>
+
+        </div>
+          
+    <div class="menuM">
+    
+    	<a href="#"><img src="img/menuM.png"  id="secret"/></a>
+    	<center><a href="index.html" ><img src="img/menu2.png"  id="lionImg"/></a>
+        <a href="#login" id="abrir" ><img src="img/login.png"  id="loginImg"/></a>
+    
+    </div>
+
+          <div class="loginS"></div>
+            <div id="loS">
+
+            <center><form name="login" action="lionP.php" method="post" > 
+                   
+                <br />  
+                
+                <input name="email" type="text" placeholder="E-mail:" id="label" size="30" minlength="3"  />
+                
+                        <br /><br />
+                
+                    <input name="password" type="password" placeholder="Senha:" id="labelD" size="30" minlength="6" /> 
+                     <input name="retorno" type="hidden" value="servicos.html"/> 
+                 
+                         <br/> <br />
+                  
+                            <input type="submit" name="enter" value="Entrar" id="enter">
+
+                            <article class='glass down'>
+  							<h8 class='cancel'></h8>
+                            </article>
+                  
+                    </form>
+
+        </div></center>
+
+ <script type="text/javascript">
+
+//gravação
+
+window.SpeechRecognition = window.SpeechRecognition ||
+window.webkitSpeechRecognition ||
+null;
+ 
+//caso não suporte esta API DE VOZ            
+if (window.SpeechRecognition === null) {
+    document.getElementById('unsupported').classList.remove('hidden');
+}else {
+    //......
+}
+
+var verifica = false;
+var escrever = false;
+var escreverS = false;
+
+var recognizer = new window.SpeechRecognition();
+
+var transcription = "";
+
+            //Para o reconhecedor de voz, não parar de ouvir, mesmo que tenha pausas no usuario
+            recognizer.continuous = true;
+
+            recognizer.start();
+
+            recognizer.onresult = function(event){
+
+                transcription = "";
+                for (var i = event.resultIndex; i < event.results.length; i++) {
+                    if(event.results[i].isFinal){
+
+                        transcription =event.results[i][0].transcript; /*+' (Taxa de acerto [0/1] : ' + event.results[i][0].confidence + ')'*/
+
+                        transcription = transcription.replace(' ', '')
+
+                        //alert(transcription);
+
+                        if(transcription == 'Assistente' || transcription == 'assistente'){
+
+                            verifica = true;
+                            document.getElementById('gravar').style.background="url(img/micro2.png)";
+                            document.getElementById('gravar').style.backgroundSize="10px 20px";
+                            document.getElementById('gravar').style.backgroundRepeat="no-repeat";
+                            document.getElementById('gravar').style.webkitTransition ="all ease-out 0.4s";
+                        }
+
+                        if(transcription == 'Parar' || transcription == 'parar'){                          
+
+                          verifica = false;
+                          escrever = false;
+                            escreverS = false;
+                           document.getElementById('gravar').style.background="url(img/micro.png)";
+                            document.getElementById('gravar').style.backgroundSize="10px 20px";
+                            document.getElementById('gravar').style.backgroundRepeat="no-repeat";
+                           document.getElementById('gravar').style.webkitTransition ="all ease-out 0.4s";
+
+                        }
+
+
+                        if(verifica == true){
+
+                          if(transcription == 'letra m' || transcription == 'letra M' || transcription == 'Letra m' || transcription == 'Letra M' || transcription == 'M' || transcription == 'm'){
+                            escrever = false;
+                            escreverS = false;
+                            jQuery(document).ready(function($) { 
+   
+                               
+                                  
+                                  $('html,body').animate({scrollTop:$("#t1").offset().top}, 800);
+                             
+                             
+                            });
+                            
+                          }
+
+                          if(transcription == 'letra v' || transcription == 'letra V' || transcription == 'Letra v' || transcription == 'Letra V' || transcription == 'V' || transcription == 'v'){
+                            escrever = false;
+                            escreverS = false;
+                            jQuery(document).ready(function($) { 
+   
+                               
+                                  
+                                  $('html,body').animate({scrollTop:$("#t2").offset().top}, 800);
+                             
+                             
+                            });
+                            
+                          }
+
+                          if(transcription == 'letra r' || transcription == 'letra R' || transcription == 'Letra r' || transcription == 'Letra R' || transcription == 'r' || transcription == 'R'){
+                            escrever = false;
+                            escreverS = false;
+                            jQuery(document).ready(function($) { 
+   
+                               
+                                  
+                                  $('html,body').animate({scrollTop:$("#t3").offset().top}, 800);
+                             
+                             
+                            });
+                            
+                          }
+
+                          if(transcription == 'letra o' || transcription == 'letra O' || transcription == 'Letra o' || transcription == 'Letra O' || transcription == 'letra ó' || transcription == 'letra Ó' || transcription == 'Letra ó' || transcription == 'Letra Ó' || transcription == 'letra ô' || transcription == 'letra Ô' || transcription == 'Letra ô' || transcription == 'Letra Ô' || transcription == 'O' || transcription == 'o' || transcription == 'Ó' || transcription == 'ó' || transcription == 'ô' || transcription == 'Ô'){
+                            escrever = false;
+                            escreverS = false;
+                            jQuery(document).ready(function($) { 
+   
+                               
+                                  
+                                  $('html,body').animate({scrollTop:$("#t4").offset().top}, 800);
+                             
+                             
+                            });
+                            
+                          }
+
+                          if(transcription == 'topo' || transcription == 'Topo' || transcription == 'Voltar ao topo' || transcription == 'voltar ao topo' || transcription == 'Voltar topo' || transcription == 'voltar topo'){
+                            escrever = false;
+                            escreverS = false;
+                            jQuery(document).ready(function($) { 
+   
+                               
+                                  
+                                  $('html,body').animate({scrollTop:$("#menuS").offset().top}, 800);
+                             
+                             
+                            });
+                            
+                          }
+
+                         if(transcription == 'Facebook' || transcription == 'facebook'){
+
+                            window.location.replace("https://pt-br.facebook.com/");
+
+                         }
+
+                          if(transcription == 'youtube' || transcription == 'Youtube' || transcription == 'youTube' || transcription == 'YouTube'){
+
+                            window.location.replace("https://www.youtube.com/");
+
+                         }
+
+                          if(transcription == 'twitter' || transcription == 'Twitter'){
+
+                            window.location.replace("https://twitter.com/");
+
+                         }
+
+                         if(transcription == 'Home' || transcription == 'home' ||  transcription == 'Inicio' || transcription == 'inicio' || transcription == 'Início' || transcription == 'início'){
+
+                            escrever = false;
+                            escreverS = false;
+
+                            window.location.replace("index.html");
+
+                         }
+
+                         if(transcription == 'Contatos' || transcription == 'contatos'){
+
+                          escrever = false;
+                              escreverS = false;
+
+                            window.location.replace("contatos.html");
+
+                         }
+
+                         if(transcription == 'Login' || transcription == 'login'){
+
+                            escrever = false;
+                              escreverS = false;
+
+                           event.preventDefault();
+
+                            $l(".loginS").slideToggle("slow");
+                            $l("#loS").slideToggle("slow");
+                           
+                             var overlay = document.querySelector('.glass');
+                              if (overlay.className === 'glass down') {
+                                overlay.className = 'glass up';
+                                document.getElementById('menuS').style.background="rgba(2,2,2,0.40)";
+                              } else {
+                                overlay.className = 'glass down';
+                               var intervalo = window.setInterval(function() {
+                 
+                                document.getElementById('menuS').style.background="rgba(2,2,2,0.76)";
+                            
+                            }, 500);
+                            
+                            window.setTimeout(function() {
+                                clearInterval(intervalo);
+                            }, 500);
+                              }
+
+                         }
+
+                          if(transcription == 'Entrar' || transcription == 'entrar'){
+
+                              login.enter.click();
+
+                              escrever = false;
+                              escreverS = false;
+
+                          }
+
+                         if(transcription == 'Escreva meu e-mail' || transcription == 'escreva meu e-mail' || escrever == true){
+
+                          if(transcription == 'Escreva minha senha' || transcription == 'escreva minha senha' || transcription == 'Escreva a minha senha' || transcription == 'escreva a minha senha'){
+
+                              escrever = false;
+
+                          }
+
+                          document.getElementById('label').style.borderColor='#1088e0';
+                          document.getElementById('labelD').style.borderColor='rgba(242,242,242,0.76)';
+
+                            if(escrever == true){
+
+                                if(transcription == 'Limpar' || transcription == 'limpar'){
+
+                                  login.email.value = "";
+
+                                }else{
+
+                                  login.email.value = transcription;
+
+
+                                }
+
+                            }else{
+
+                                 escrever = true;
+                                 escreverS = false;
+
+                            }                            
+
+                         }
+
+                         if(transcription == 'Escreva minha senha' || transcription == 'escreva minha senha' || escreverS == true || transcription == 'Escreva a minha senha' || transcription == 'escreva a minha senha'){
+
+                          document.getElementById('labelD').style.borderColor='#1088e0';
+                          document.getElementById('label').style.borderColor='rgba(242,242,242,0.76)';
+
+                            if(escreverS == true){
+
+                                if(transcription == 'Limpar' || transcription == 'limpar'){
+
+                                  login.password.value = "";
+
+                                }else{
+
+                                  login.password.value = transcription;
+
+                                }
+
+                            }else{
+
+                                 escreverS = true;
+                                 escrever =  false;
+
+                            }                            
+
+                         }
+
+
+                       }
+
+                    }else{
+                        transcription += event.results[i][0].transcript;
+                    }
+                }
+            }
+
+            document.querySelector("#gravar").addEventListener("click",function(){
+
+               if(verifica == false){
+
+                    document.getElementById('gravar').style.background="url(img/micro2.png)";
+                     document.getElementById('gravar').style.backgroundSize="10px 20px";
+                      document.getElementById('gravar').style.backgroundRepeat="no-repeat";
+                    document.getElementById('gravar').style.webkitTransition ="all ease-out 0.4s";
+                    verifica = true;
+
+                }else{
+                  
+                    document.getElementById('gravar').style.background="url(img/micro.png)";
+                     document.getElementById('gravar').style.backgroundSize="10px 20px";
+                      document.getElementById('gravar').style.backgroundRepeat="no-repeat";
+                   document.getElementById('gravar').style.webkitTransition ="all ease-out 0.4s";
+                    verifica = false;
+
+              }
+                  
+            });
+
+
+</script>
+
+<script>
+
+var contM = 0;
+
+var $l = jQuery.noConflict();
+
+    $l(document).ready(function(){
+
+
+        $l(".cancel").click(function(event){
+
+
+        event.preventDefault();
+        
+
+            $l(".loginS").slideToggle("slow");
+            $l("#loS").slideToggle("slow");
+			 var overlay = document.querySelector('.glass');
+			  if (overlay.className === 'glass down') {
+				overlay.className = 'glass up';
+			  } else {
+				overlay.className = 'glass down';
+			  }
+            var intervalo = window.setInterval(function() {
+ 
+                document.getElementById('menuS').style.background="rgba(2,2,2,0.76)";
+            
+            }, 500);
+            
+            window.setTimeout(function() {
+                clearInterval(intervalo);
+            }, 500);
+
+             /*<#conteudo style="-webkit-filter: blur(5px); 
+    -moz-filter: blur(5px); 
+    -o-filter: blur(5px); 
+    -ms-filter: blur(5px); 
+    filter: blur(5px);">*/
+
+    });
+
+
+        $l("#abrir").click(function(event){
+
+         
+         event.preventDefault();
+
+            $l(".loginS").slideToggle("slow");
+            $l("#loS").slideToggle("slow");
+           
+             var overlay = document.querySelector('.glass');
+			  if (overlay.className === 'glass down') {
+				overlay.className = 'glass up';
+                document.getElementById('menuS').style.background="rgba(2,2,2,0.40)";
+                document.getElementById('voltarTopo').style.backgroundImage = "url('img/teste.png)";    
+			  } else {
+				overlay.className = 'glass down';
+               var intervalo = window.setInterval(function() {
+ 
+                document.getElementById('menuS').style.background="rgba(2,2,2,0.76)";
+            
+            }, 500);
+            
+            window.setTimeout(function() {
+                clearInterval(intervalo);
+            }, 500);
+			  }
+
+        });
+		
+		$l("#loginImg").click(function(event){
+         
+         event.preventDefault();
+
+
+            $l(".loginS").slideToggle("slow");
+            $l("#loS").slideToggle("slow");
+			  var overlay = document.querySelector('.glass');
+			  if (overlay.className === 'glass down') {
+				overlay.className = 'glass up';
+                 document.querySelector('.menuM').style.background="rgba(2,2,2,0.40)";
+			  } else {
+				overlay.className = 'glass down';
+
+                var intervalo = window.setInterval(function() {
+ 
+                document.querySelector('.menuM').style.background="rgba(2,2,2,0.76)";
+            
+            }, 400);
+            
+            window.setTimeout(function() {
+                clearInterval(intervalo);
+            }, 400);
+                
+			  }
+			  
+        });
+
+		$l("#secret").click(function(event){
+		 
+         event.preventDefault();
+			
+			var newImg = new Array(); 
+			
+			newImg[0] = "img/menuM.png"; 
+			newImg[1] = "img/menuM2.png"; 
+			newImg[2] = "img/menuM3.png";
+			newImg[3] = "img/menuM4.png";  
+			
+			var contImg = 0;
+
+			if(contM == 0){
+				
+				var intervalo = window.setInterval(function() {
+	 
+				contImg++;
+					
+				if(contImg < 4){
+						
+					document.images["secret"].src = newImg[contImg];
+					
+							
+				}
+				
+				}, 150);
+	
+			}else{
+				
+				contImg = 3;
+				
+				var intervalo = window.setInterval(function() {
+	 		
+				contImg--;
+					
+				if(contImg >= 0){
+						
+					document.images["secret"].src = newImg[contImg];
+					
+							
+				}
+				
+				}, 150);	
+				
+			}
+
+            $l("#tudo").slideToggle("slow");
+            $l("#gaveta").slideToggle("slow");
+			  
+                var intervalo = window.setInterval(function() {
+ 
+ 				if(contM == 0){
+					
+					var overlay = document.querySelector('.glass');
+
+					 if (overlay.className === 'glass up') {
+						
+						$l(".loginS").slideToggle("slow");
+						$l("#loS").slideToggle("slow");
+						overlay.className = 'glass down';
+						document.querySelector('.menuM').style.background="rgba(2,2,2,0.76)";
+						 
+					 }
+					document.querySelector('body').style.background="#000";
+					
+					document.querySelector('#container').style.marginTop="-10px";
+					
+					$l("#loginImg").slideToggle("slow");
+					contM++;
+									
+				}else{
+					
+					document.querySelector('body').style.background="#EFEFEF";
+					
+					document.querySelector('#container').style.marginTop="-485px";
+					
+					$l("#loginImg").slideToggle("slow");
+					contM--;
+					
+				}
+            
+            }, 400);
+            
+            window.setTimeout(function() {
+                clearInterval(intervalo);
+            }, 400);
+                
+			  
+        });
+
+    
+    });
+
+    </script>
+
+
+      
+         </div>	
+
+<div id="gaveta">
+    
+    	<div id="link">
+        
+        	 <a href="servicos.html">Serviços</a>
+             <hr />
+             <a href="contatos.html">Contatos</a>
+             <hr />
+             <a><button id="gravar">Voz</button></a>
+        
+        </div>
+    
+    </div>  
+
+<div id="tudo">
+
+
+<input type="button" class="voltarTopo" onclick=" $j('html,body').animate({scrollTop: $j('html').offset().top}, 800);" value="" >
+
+
+			<div id="conteudoR">
+         
+         		<h3 id style="margin-top:-38px;
+                    width:100%;
+                    position:relative;
+                    z-index:0;"><img src="img/city.png" /></h3>
+         
+				<h1 id="texto1">Serviços</h1>
+                
+                <h4>Disponível no Brasil</h4>
+                
+                <hr />
+                
+                <h3>S</h3>
+                
+                <h1 id="texto2">Sempre a melhor escolha.</h1>
+                    
+                    <center><a href="t1" id="ir1">M</a>
+                     <a href="t2" id="ir2">V</a>
+                      <a href="t3" id="ir3">R</a>
+                       <a href="t4" id="ir4">O</a></center>
+                
+              
+
+
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) { 
+   
+     $("#ir1").click(function(event){        
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$("#t1").offset().top}, 800);
+
+   });
+   
+   $("#ir2").click(function(event){        
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$("#t2").offset().top}, 800);
+   });
+
+    $("#ir3").click(function(event){        
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$("#t3").offset().top}, 800);
+   });
+   
+    $("#ir4").click(function(event){        
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$("#t4").offset().top}, 800);
+   });
+   
+});
+</script>
+
+ <script type="text/javascript">
+// Use jQuery com a variavel $j(...)
+var $j = jQuery.noConflict();
+$j(document).ready(function() {
+$j(".voltarTopo").hide();
+$j(function () {
+$j(window).scroll(function () {
+if ($j(this).scrollTop() > 715) {
+$j('.voltarTopo').fadeIn();
+} else {
+$j('.voltarTopo').fadeOut();
+}
+});
+$j('.voltarTopo').click(function() {
+}); 
+    });});
+
+</script>
+
+		<div id="conteudoS">				
+
+		<h6 id="t1">M</h6>
+             
+                    <h1 id="tituloM">Manutenção</h1>
+                
+               <center> <h2 id="descM">Pratico e rápido, não à com o que se preocupar <br /> quando asseguramos nossos clientes de que seu <br /> aparelho recebera uma excelente manutenão, e <br /> seu aparelho será entrege em menos de 48 horas. </br> 10% de desconto em pagamentos a vista.</h2></center>
+                
+                
+                    <h1 id="t2">V</h1>
+                    
+                    <h1 id="tituloV">Vendas</h1>
+                    
+                    <h1 id="descV"> Tudo o que você precisa está a sua frente, produtos <br /> de qualidade e 100% originais. Confira também em <br> nossa loja física os mais variados produtos <br />  futuramente incríveis. </h1>
+            
+            <h1 id="t3">R</h1>
+                    
+                    <h1 id="tituloR">Reparos</h1>
+                    
+                    <h1 id="descR"> Para que esperar, se você pode ter seu reparo agora! <br /> Com uma equipe especializada e confiável, onde <br /> o que você precisa está ao seu alcance. </h1>
+                
+                  <h1 id="t4">O</h1>
+                    
+                    <h1 id="tituloO">Orçamento</h1>
+                    
+                    <h1 id="descO">Não demore para concertar! Temos os melhores <br /> orçamentos, todos são padronizados conforme o <br /> seu bolso e atendendo suas necessidades. </h1>
+                
+			</div>
+
+
+		<div id="rodapeD">
+
+			
+					<center><a href="index.html"> </br> </br> &nbsp &nbsp &nbsp &nbsp Home</a><width=70 /td>
+					<a href="#"> </br> </br> &nbsp &nbsp &nbsp &nbsp Serviços</a>
+                 	<a href="contatos.html"> </br> </br> &nbsp &nbsp &nbsp &nbsp Contatos</a>
+		 			<a href="cadastro.html"> </br> </br> &nbsp &nbsp &nbsp &nbsp &nbsp Cadastro</a></a>
+					
+                     
+                 <table id="tb">
+                   
+                   		<tr> 
+                           
+                           <td><h3><a href="https://www.facebook.com">f</a></h3></td>
+                            
+                            <td><h4><a href="https://www.youtube.com/">y</a></h4></td>
+                            
+                            <td><h5><a href="https://twitter.com/">t</a></h5></td>
+                    
+                   		</tr>
+                   
+                  </table>
+                  
+		
+					 <h3 id="copS">Copyright © 2015 Lion Inc. Todos os direitos reservados.</h3>
+                    
+                     <h1><img src="img/lion3.png" /></h1>
+		
+		</div>
+        
+ </div>
+        
+	</body>
+
+</html>

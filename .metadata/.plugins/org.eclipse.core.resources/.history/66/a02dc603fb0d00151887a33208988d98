@@ -1,0 +1,74 @@
+
+public class LivroF {
+
+	private String codUsuario;
+	
+	private String codLivro;
+	
+	private String codAutor;
+	
+	private String codGenero;
+	
+	private int contador ;
+	
+	public int getContador() {
+		
+		return contador;
+	
+	}
+
+	public void setContador(int contador) {
+	
+		this.contador = contador;
+	
+	}
+
+	public String getCodUsuario() {
+		
+		return codUsuario;
+	
+	}
+
+	public void setCodUsuario(String codUsuario) {
+	
+		this.codUsuario = codUsuario;
+	
+	}
+
+	public String getCodLivro() {
+	
+		return codLivro;
+	
+	}
+
+	public void setCodLivro(String codLivro) {
+	
+		this.codLivro = codLivro;
+	
+	}
+
+	public String getCodAutor() {
+	
+		return codAutor;
+	
+	}
+
+	public void setCodAutor(String codAutor) {
+	
+		this.codAutor = codAutor;
+	
+	}
+
+	public String getCodGenero() {
+	
+		return codGenero;
+	
+	}
+
+	public void setCodGenero(String codGenero) {
+	
+		this.codGenero = codGenero;
+	
+	}
+	
+}
